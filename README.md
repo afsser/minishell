@@ -34,6 +34,15 @@ The **minishell** project implements a range of functionalities that enable it t
 
 - **Execution Status**: It stores and displays the exit status of executed commands, allowing users to check the success or failure of their commands.
 
+### Bonus Features
+As an extension of the basic functionality, the **minishell** project includes bonus features that enhance the shell's capabilities by implementing logical operators `||` and `&&`. 
+
+- **Logical OR (`||`)**: This operator allows users to chain commands such that the second command will only execute if the first command fails (returns a non-zero exit status). For example, in the command `command1 || command2`, `command2` will only run if `command1` does not succeed.
+
+- **Logical AND (`&&`)**: Conversely, the logical AND operator ensures that the second command executes only if the first command is successful (returns a zero exit status). For instance, `command1 && command2` means `command2` will only execute if `command1` completes successfully.
+
+The implementation of these operators required modifications to the command parsing and execution logic. By incorporating these operators, the **minishell** can now provide more powerful command execution capabilities, enabling users to create more complex command sequences directly from the shell prompt. This feature not only enhances usability but also aligns the **minishell** more closely with the behavior of traditional shells like bash.
+
 
 ### External Functions and Libraries
 Your implementation will leverage various external functions, including:
