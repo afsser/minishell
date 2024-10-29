@@ -3,15 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 19:40:49 by edcastro          #+#    #+#             */
-/*   Updated: 2024/10/15 14:13:59 by edcastro         ###   ########.fr       */
+/*   Updated: 2024/10/29 17:52:46 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+
+// colors
+# define ORANGE "\001\033[38;5;208m\002"
+# define BLUE   "\001\033[38;5;27m\002"
+# define GREEN  "\001\033[38;5;46m\002"
+# define RST	"\001\033[0m\002"
 
 // libs
 # include "../libft/libft.h"
