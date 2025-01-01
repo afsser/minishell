@@ -1,5 +1,5 @@
 ## Overview
-The **minishell** project is a comprehensive and challenging endeavor that combines numerous concepts learned throughout the training, such as process management, file descriptor handling, data structures, and memory management. In this project, you will implement a simplified version of a shell, allowing you to deepen your understanding of fundamental operating system functionalities.
+The **minishell** project is a comprehensive and challenging project that combines numerous concepts learned, such as process management, file descriptor handling, data structures, and memory management. In this project, we implement a simplified version of a shell, deepen our understanding of fundamental operating system functionalities.
 
 This shell will utilize essential system calls like `fork()`, `execve()`, and `pipe()` to manage processes and facilitate inter-process communication. Handling file descriptors correctly is crucial, especially when working with pipes and redirections, ensuring that no file descriptor is left open inadvertently at the end of execution. The project also emphasizes memory management, requiring you to be vigilant against memory leaks, which can be particularly challenging in such a complex application.
 
