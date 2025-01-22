@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edcastro <edcastro@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 19:22:44 by fcaldas-          #+#    #+#             */
-/*   Updated: 2024/10/15 14:54:12 by edcastro         ###   ########.fr       */
+/*   Updated: 2025/01/22 18:33:43 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,22 +61,28 @@ static int	set_env(char *name, char *value, t_minishell *data)
 
 static int	builtin_cd_util(char *args[], t_minishell *data, char **path)
 {
-	*path = NULL;
+	char	*home;
+
 	if (args[1] && args[2])
 	{
 		ft_putendl_fd("ERROR: cd: Too many arguments", STDERR_FILENO);
 		return (1);
 	}
-	if (args[1] == NULL)
-		*path = search_value(data->envs, "HOME");
-	else
-		*path = ft_strdup(args[1]);
-	if (!*path[0])
+	home = search_value(data->envs, "HOME");
+	if (!home)
 	{
 		ft_putendl_fd("ERROR: cd: HOME not defined", STDERR_FILENO);
-		free(*path);
+		free(home);
 		return (1);
 	}
+	*path = NULL;
+	if (args[1] == NULL)
+		*path = ft_strdup(home);
+	else if (args[1] && ft_strchr(args[1], '~'))
+		*path = ft_strjoin(home, args[1] + 1);
+	else
+		*path = ft_strdup(args[1]);
+	free (home);
 	return (0);
 }
 
