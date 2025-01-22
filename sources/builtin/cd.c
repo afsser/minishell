@@ -6,7 +6,7 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 19:22:44 by fcaldas-          #+#    #+#             */
-/*   Updated: 2025/01/22 18:33:43 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2025/01/22 18:36:33 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int	builtin_cd_util(char *args[], t_minishell *data, char **path)
 		return (1);
 	}
 	home = search_value(data->envs, "HOME");
-	if (!home)
+	if (!home[0])
 	{
 		ft_putendl_fd("ERROR: cd: HOME not defined", STDERR_FILENO);
 		free(home);
