@@ -6,27 +6,23 @@
 /*   By: fcaldas- <fcaldas-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 19:22:44 by fcaldas-          #+#    #+#             */
-/*   Updated: 2025/01/22 18:36:33 by fcaldas-         ###   ########.fr       */
+/*   Updated: 2025/01/22 19:59:08 by fcaldas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+#include <errno.h>
 
 static void	cd_print_error_message(char *folder)
 {
-	int			length;
-	char		*message_to_print;
-	const char	*message[2] = {"ERROR: cd: '", \
-								"': file or directory does not exist"};
-
-	length = ft_strlen(message[0]) + ft_strlen(folder) \
-						+ ft_strlen(message[1]) + 1;
-	message_to_print = malloc(length);
-	ft_strlcpy(message_to_print, message[0], length);
-	ft_strlcat(message_to_print, folder, length);
-	ft_strlcat(message_to_print, message[1], length);
-	ft_putendl_fd(message_to_print, STDERR_FILENO);
-	free(message_to_print);
+	ft_putstr_fd("ERROR: cd: ", STDERR_FILENO);
+	ft_putstr_fd(folder, STDERR_FILENO);
+	if (access(folder, F_OK) != 0)
+		ft_putendl_fd(": file or directory does not exist", STDERR_FILENO);
+	else if (access(folder, X_OK) != 0)
+		ft_putendl_fd(": Permission denied", STDERR_FILENO);
+	else
+		ft_putendl_fd(": An unknown error occurred", STDERR_FILENO);
 }
 
 static int	add_envp_list(t_env **head, char *name, char *value)
